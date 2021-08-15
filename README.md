@@ -8,11 +8,11 @@ There are two methods, one for computing the hash of the input, and one for doub
 
 ```js
 import { SHA256 } from "https://taisukef.github.io/sha256-es/SHA256.js";
-console.log(SHA256);
 
 const mes = new TextEncoder().encode("Hello!");
 const bin = SHA256.digest(mes);
 console.log(bin);
+
 const bin2 = SHA256.x2(mes);
 console.log(bin2);
 ```
