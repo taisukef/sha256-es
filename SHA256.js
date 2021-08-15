@@ -1,6 +1,7 @@
 !function(globals) {
 'use strict'
 
+/*
 var _imports = {}
 
 if (typeof module !== 'undefined' && module.exports) { //CommonJS
@@ -12,6 +13,8 @@ if (typeof module !== 'undefined' && module.exports) { //CommonJS
   _imports.convertString = globals.convertString
   globals.sha256 = sha256
 }
+*/
+globals.sha256 = sha256
 
 /*
 CryptoJS v3.1.2
@@ -122,10 +125,13 @@ var processBlock = function (H, M, offset) {
   H[7] = (H[7] + h) | 0;
 }
 
-function sha256(message, options) {;
+function sha256(message) {;
+//function sha256(message, options) {;
+  /*
   if (message.constructor === String) {
     message = _imports.convertString.UTF8.stringToBytes(message);
   }
+  */
 
   var H =[ 0x6A09E667, 0xBB67AE85, 0x3C6EF372, 0xA54FF53A,
            0x510E527F, 0x9B05688C, 0x1F83D9AB, 0x5BE0CD19 ];
@@ -141,13 +147,23 @@ function sha256(message, options) {;
   }
 
   var digestbytes = wordsToBytes(H);
+  /*
   return options && options.asBytes ? digestbytes :
          options && options.asString ? _imports.convertString.bytesToString(digestbytes) :
          _imports.bytesToHex(digestbytes)
+  */
+ return digestbytes;
 }
 
 sha256.x2 = function(message, options) {
   return sha256(sha256(message, { asBytes:true }), options)
 }
 
-}(this);
+}(globalThis);
+
+const SHA256 = {
+  digest: globalThis.sha256,
+  x2: globalThis.sha256.x2,
+};
+
+export { SHA256 };
