@@ -1,3 +1,7 @@
+0.3.0 / 2021-08-16
+------------------
+- ES module version
+
 0.2.0 / 2015-03-18
 ------------------
 - browserify fix https://github.com/cryptocoinjs/sha256/pull/4
