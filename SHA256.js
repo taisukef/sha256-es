@@ -152,7 +152,7 @@ function sha256(message) {;
          options && options.asString ? _imports.convertString.bytesToString(digestbytes) :
          _imports.bytesToHex(digestbytes)
   */
- return digestbytes;
+ return new Uint8Array(digestbytes);
 }
 
 sha256.x2 = function(message, options) {
